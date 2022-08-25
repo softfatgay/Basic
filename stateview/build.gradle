@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion rootProject.ext.version.compileSdkVersion
+
+    defaultConfig {
+        minSdk rootProject.ext.version.minSdkVersion
+        targetSdk rootProject.ext.version.targetSdkVersion
+        versionCode 9
+        versionName "3.0.2"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.android.kotlin_stdlib
+    api rootProject.ext.android.appcompat
+    testImplementation rootProject.ext.android.junit
+    androidTestImplementation rootProject.ext.android.ext_junit
+    androidTestImplementation rootProject.ext.android.espresso
+
+    compileOnly rootProject.ext.android.constraintlayout
+    compileOnly rootProject.ext.android.swiperefreshlayout
+}

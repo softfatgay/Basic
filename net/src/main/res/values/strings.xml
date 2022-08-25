@@ -1,0 +1,9 @@
+<resources>
+    <string name="net_time_out">network timeout</string>
+    <string name="common_error_net">network error</string>
+    <string name="error_server_json">json error</string>
+    <string name="common_error">network error,please try later</string>
+    <string name="common_error_server">server error,please try later</string>
+    <string name="common_error_request">network error,please try later</string>
+    <string name="connect_server_error">connect server time out</string>
+</resources>

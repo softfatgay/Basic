@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#10000000">
+
+    <LinearLayout
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:paddingTop="10dp"
+        android:background="@drawable/circle_line_back_white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_error_tips"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:text="@string/text_retry"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <LinearLayout
+            android:layout_width="170dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_retry"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="42dp"
+                android:gravity="center"
+                android:text="重试"
+                android:textColor="#333333" />
+
+            <TextView
+                android:id="@+id/tv_retry_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="42dp"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="#999999" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

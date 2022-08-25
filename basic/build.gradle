@@ -1,0 +1,24 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk rootProject.ext.version.compileSdkVersion
+
+    defaultConfig {
+        minSdk rootProject.ext.version.minSdkVersion
+        targetSdk rootProject.ext.version.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+}
+
+dependencies {
+    implementation rootProject.ext.android.kotlin_stdlib
+
+    api rootProject.ext.android.livedata
+    api rootProject.ext.android.viewmodel
+    api rootProject.ext.lib.gson
+}
