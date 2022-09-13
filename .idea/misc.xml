@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/private/Basic/app/src/main/res/layout/activity_main.xml" value="0.15307971014492755" />
+        <entry key="..\:/private/Basic/app/src/main/res/layout/activity_webview.xml" value="0.14221014492753623" />
+        <entry key="..\:/private/Basic/app/src/main/res/layout/fragment_webview.xml" value="0.1" />
         <entry key="..\:/private/BasicDemo/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
         <entry key="..\:/private/BasicDemo/stateview/src/main/res/drawable/circle_line_back_white.xml" value="0.101" />
         <entry key="..\:/private/BasicDemo/stateview/src/main/res/drawable/ic_launcher_background.xml" value="0.101" />

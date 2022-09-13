@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -9,16 +10,31 @@ android {
     defaultConfig {
         minSdk rootProject.ext.version.minSdkVersion
         targetSdk rootProject.ext.version.targetSdkVersion
-        applicationId "com.example.basicdemo"
+        applicationId "com.basic.demo"
 
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file("../keyStore.jks")
+            storePassword "qwer1234"
+            keyAlias "qwer1234"
+            keyPassword "qwer1234"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -50,4 +66,5 @@ dependencies {
     implementation project(path: ':net')
     implementation project(path: ':basic')
     implementation project(path: ':stateview')
+    implementation project(path: ':lib-apm')
 }

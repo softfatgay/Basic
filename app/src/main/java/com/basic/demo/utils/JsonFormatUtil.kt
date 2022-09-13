@@ -1,4 +1,4 @@
-package com.example.basicdemo.utils
+package com.basic.demo.utils
 
 import org.json.JSONObject
 import org.json.JSONArray

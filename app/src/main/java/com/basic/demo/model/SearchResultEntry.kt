@@ -1,4 +1,4 @@
-package com.example.basicdemo.model
+package com.basic.demo.model
 
 import java.io.Serializable
 

@@ -1,12 +1,13 @@
-package com.example.basicdemo.viewModel
+package com.basic.demo.viewModel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.basicdemo.net.RetrofitClint
-import com.example.basicdemo.utils.JsonFormatUtil
-import com.example.net.SingleLiveEvent
+import com.basic.demo.net.RetrofitClint
+import com.basic.demo.utils.JsonFormatUtil
 import com.example.net.viewmodel.BaseNetViewModel
 import com.example.net.viewmodel.UIStatus
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.stateIn
 
 class MainViewModel : BaseNetViewModel() {
     val homeData = MutableLiveData<String>()

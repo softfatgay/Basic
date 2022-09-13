@@ -1,6 +1,6 @@
-package com.example.basicdemo.net
+package com.basic.demo.net
 
-import com.example.basicdemo.net.apiservice.ApiService
+import com.basic.demo.net.apiservice.ApiService
 import com.example.net.RetrofitUtil
 
 object RetrofitClint {

@@ -1,6 +1,7 @@
-package com.example.basicdemo.base
+package com.basic.demo.base
 
 import android.Manifest
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
@@ -10,7 +11,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
-import com.example.basicdemo.R
+import com.basic.demo.R
 import com.github.nukc.stateview.StateView
 import com.tbruyelle.rxpermissions3.Permission
 import com.tbruyelle.rxpermissions3.RxPermissions
@@ -96,9 +97,9 @@ abstract class BaseActivity : AppCompatActivity() {
             }
     }
 
-    fun jump2Page(intent: Intent) {
+    @JvmOverloads
+    fun jump2Page(intent: Intent, context: Context = this) {
         startActivity(intent)
     }
-
 
 }

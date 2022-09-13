@@ -16,6 +16,7 @@ import java.net.UnknownHostException
 
 object HttpException {
 
+
     /**
      * 处理异常，toast提示错误信息
      */

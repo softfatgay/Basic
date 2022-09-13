@@ -1,8 +1,6 @@
-package com.example.basicdemo.net.apiservice
+package com.basic.demo.net.apiservice
 
-import com.example.basicdemo.model.BaseModel
-import com.example.basicdemo.model.HomeDataModel
-import com.example.basicdemo.model.SearchResultEntry
+import com.basic.demo.model.SearchResultEntry
 import com.example.net.Constants
 import okhttp3.ResponseBody
 import retrofit2.http.GET
