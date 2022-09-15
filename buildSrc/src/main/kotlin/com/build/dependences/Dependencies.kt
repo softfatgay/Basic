@@ -44,7 +44,8 @@ object Dependencies {
 
     //compose
 
-    const val composeMaterial = "androidx.compose.material3:material3:1.0.0-beta01"
+    const val composeMaterial = "androidx.compose.material:material:${AndroidVersion.composeVersion}"
+    const val composeMaterial3 = "androidx.compose.material3:material3:1.0.0-beta01"
     const val composeActivity = "androidx.activity:activity-compose:1.5.1"
     const val composeUI = "androidx.compose.ui:ui:${AndroidVersion.composeVersion}"
     const val composePreview = "androidx.compose.ui:ui-tooling-preview:${AndroidVersion.composeVersion}"

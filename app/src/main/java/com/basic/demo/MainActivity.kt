@@ -1,22 +1,41 @@
 package com.basic.demo
 
-import android.content.Intent
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
-import android.view.View
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Menu
+import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModelProvider
-import com.basic.demo.base.BaseActivity
 import com.basic.demo.databinding.ActivityMainBinding
-import com.basic.demo.model.TagListItem
+import com.basic.demo.home.HomeScreen
 import com.basic.demo.viewModel.MainViewModel
-import com.basic.demo.webview.WebViewActivity
-import com.example.net.viewmodel.UIStatus
 
-class MainActivity : BaseActivity(), View.OnClickListener {
+enum class NaviType {
+    HOME,CART,MINE
+}
 
-    override val layout: View
-        get() = binding.root
 
+class MainActivity : ComponentActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -25,78 +44,49 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
-    override fun initView() {
-        super.initView()
-
-        Thread {
-            binding.btnWeb.visibility = View.VISIBLE
-        }.start()
-
-    }
-
-    override fun initEvent() {
-        super.initEvent()
-        binding.btn.setOnClickListener(this)
-        binding.btnWeb.setOnClickListener(this)
-
-    }
-
-    override fun reTry() {
-        super.reTry()
-        getData()
-
-    }
-
-    override fun initData() {
-        super.initData()
-        viewModel.UIState.observ(this) {
-            when (it) {
-                UIStatus.CONTENT -> mStateView.showContent()
-                UIStatus.LOADING -> mStateView.showLoading()
-                UIStatus.RETRY -> mStateView.showRetry()
-                else -> mStateView.showContent()
+    @SuppressLint("UnrememberedMutableState")
+    @OptIn(ExperimentalMaterial3Api::class)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            var navType = mutableStateOf(NaviType.HOME)
+            Scaffold(
+                bottomBar = {BottomNavBar(navType)},
+            ) { paddingValues->
+                Crossfade(targetState = navType,Modifier.padding(paddingValues)) {
+                   when (it.value) {
+                       NaviType.HOME -> HomeScreen()
+                       NaviType.CART -> HomeScreen()
+                       NaviType.MINE -> HomeScreen()
+                   }
+               }
             }
         }
+    }
 
-        viewModel.homeData.observe(this) {
-            binding.tv.text = it
-            binding.tv.movementMethod = ScrollingMovementMethod.getInstance();
+    @Composable
+    private fun BottomNavBar(navType: MutableState<NaviType>) {
+        BottomNavigation(backgroundColor = Color.White) {
+            BottomNavigationItem(
+                icon = { Icon(imageVector = Icons.Outlined.Home, contentDescription = null) },
+                selected = (navType.value == NaviType.HOME),
+                onClick = { navType.value = NaviType.HOME  },
+                label = { Text(text = "Home") },
+            )
+
+            BottomNavigationItem(
+                icon = { Icon(imageVector = Icons.Outlined.ShoppingCart, contentDescription = null) },
+                selected = navType.value == NaviType.CART,
+                onClick = { navType.value = NaviType.CART },
+                label = { Text(text = "Cart") },
+            )
+
+            BottomNavigationItem(
+                icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
+                selected = navType.value == NaviType.MINE,
+                onClick = { navType.value = NaviType.MINE },
+                label = { Text(text = "Mine") },
+            )
         }
     }
-
-    private fun getData() {
-        viewModel.testData()
-    }
-
-    override fun onClick(v: View) {
-        when (v) {
-            binding.btn -> getData()
-            binding.btnWeb -> goWebView()
-        }
-    }
-
-
-    private fun goWebView() {
-        val intent = Intent(this, WebViewActivity::class.java)
-
-        val tagListItems = ArrayList<TagListItem>()
-
-        tagListItems.add(TagListItem())
-        tagListItems.add(TagListItem())
-        tagListItems.add(TagListItem())
-        tagListItems.add(TagListItem())
-        tagListItems.add(TagListItem())
-
-        val bundle = Bundle()
-        bundle.putSerializable("list", tagListItems)
-        intent.putExtras(bundle)
-
-        startActivity(intent)
-    }
-
-
-    override fun onResume() {
-        super.onResume()
-    }
-
 }
