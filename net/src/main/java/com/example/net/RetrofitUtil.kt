@@ -11,7 +11,7 @@ object RetrofitUtil {
     //    https://m.you.163.com/xhr/index.json?__timestamp=1661395230483&
 //    private const val BASE_URL = "https://api.github.com/"
 //    private  var BASE_URL = "https://m.you.163.com/"
-    private var BASE_URL = ""
+    private var BASE_URL = "https://m.you.163.com/"
 
     fun baseUrl(url: String): RetrofitUtil {
         BASE_URL = url
@@ -27,7 +27,7 @@ object RetrofitUtil {
     init {
         val client = OkHttpClient.Builder()
 
-        //去除header中不需要的参数
+        //去除header中指定的参数
         client.addInterceptor(AuthInterceptor())
 
 //        //参数

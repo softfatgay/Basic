@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.utils.addComposeArgsToKotlinCompile
 import com.build.dependences.*
 
 plugins {
@@ -56,10 +57,13 @@ android {
 
     kotlinOptions {
         jvmTarget = "11"
-        freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
-
     }
-
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion =  ProjectConfigs.composeVersion
+    }
     viewBinding {
         isEnabled = true
     }
@@ -68,11 +72,16 @@ android {
 
 dependencies {
     implementation(Dependencies.coreKtx)
-    implementation(Dependencies.material)
-    implementation(Dependencies.constraintLayout)
 
     addTestImplementation()
     addAndroidTestImplementation()
+
+    addComposeImplementation()
+    addComposeDebugImplementation()
+    addComposeAndroidTestImplementation()
+
+    implementation(Dependencies.material)
+    implementation(Dependencies.constraintLayout)
 
     implementation(Dependencies.rxPermissions)
     implementation(Dependencies.rxjava)

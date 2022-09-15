@@ -43,3 +43,23 @@ fun DependencyHandler.addTestImplementation() {
         add("testImplementation", it)
     }
 }
+
+//compose---------------------------------
+fun DependencyHandler.addComposeImplementation() {
+    composeImplementation.forEach {
+        add("implementation", it)
+    }
+}
+
+fun DependencyHandler.addComposeDebugImplementation() {
+    composeDebugImplementation.forEach {
+        add("debugImplementation", it)
+    }
+}
+
+fun DependencyHandler.addComposeAndroidTestImplementation() {
+    composeAndroidTestImplementation.forEach {
+        add("androidTestImplementation", it)
+    }
+}
+//compose---------------------------------

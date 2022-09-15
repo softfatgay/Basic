@@ -39,13 +39,28 @@ internal val thirdLibDependencies = listOf(
     Dependencies.rxjava,
 )
 
-//androidTestImplementation
+//androidTestImplementation master
 internal val androidTestImplementation = listOf(
     Dependencies.extJunit,
     Dependencies.espresso
 )
 
-//testImplementation
+//testImplementation  master
 internal val testImplementation = listOf(
     Dependencies.junit,
 )
+//compose---------------------------------
+internal val composeImplementation = listOf(
+    Dependencies.composeUI,
+    Dependencies.composePreview,
+    Dependencies.composeMaterial,
+    Dependencies.composeActivity,
+)
+internal val composeDebugImplementation = listOf(
+    Dependencies.composeDebugUiTooling,
+    Dependencies.composeDebugTestManifest,
+)
+internal val composeAndroidTestImplementation = listOf(
+    Dependencies.composeUiTestJunit4,
+)
+//compose---------------------------------

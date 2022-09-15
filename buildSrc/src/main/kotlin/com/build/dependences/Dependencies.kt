@@ -15,7 +15,7 @@ object Dependencies {
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${AndroidVersion.androidLifecycleGrouped}"
     const val material = "com.google.android.material:material:${AndroidVersion.material}"
     const val constraintLayout =
-        "androidx.constraintlayout:constraintlayout:${AndroidVersion.constraintlayout}"
+        "androidx.constraintlayout:constraintlayout:${AndroidVersion.constraintLayout}"
     const val junit = "junit:junit:${AndroidVersion.junit}"
     const val extJunit = "androidx.test.ext:junit:${AndroidVersion.extJunit}"
     const val espresso = "androidx.test.espresso:espresso-core:${AndroidVersion.espresso}"
@@ -23,10 +23,9 @@ object Dependencies {
     const val appcompat = "androidx.appcompat:appcompat:${AndroidVersion.appcompat}"
     const val viewpager2 = "androidx.viewpager2:viewpager2:${AndroidVersion.viewpager2}"
     const val swipeRefreshLayout =
-        "androidx.swiperefreshlayout:swiperefreshlayout:${AndroidVersion.swiperefreshlayout}"
+        "androidx.swiperefreshlayout:swiperefreshlayout:${AndroidVersion.swipeRefreshLayout}"
     const val recyclerview = "androidx.recyclerview:recyclerview:${AndroidVersion.recyclerview}"
     const val flexbox = "com.google.android.flexbox:flexbox:${AndroidVersion.flexbox}"
-
 
 
     //third lib dependencies
@@ -41,5 +40,19 @@ object Dependencies {
     const val okhttp3 = "com.squareup.okhttp3:okhttp:${LibVersion.okhttp}"
     const val loggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${LibVersion.loggingInterceptor}"
+
+
+    //compose
+
+    const val composeMaterial = "androidx.compose.material3:material3:1.0.0-beta01"
+    const val composeActivity = "androidx.activity:activity-compose:1.5.1"
+    const val composeUI = "androidx.compose.ui:ui:${AndroidVersion.composeVersion}"
+    const val composePreview = "androidx.compose.ui:ui-tooling-preview:${AndroidVersion.composeVersion}"
+    const val composeUiTestJunit4 =
+        "androidx.compose.ui:ui-test-junit4:${AndroidVersion.composeVersion}"
+    const val composeDebugUiTooling =
+        "androidx.compose.ui:ui-tooling:${AndroidVersion.composeVersion}"
+    const val composeDebugTestManifest =
+        "androidx.compose.ui:ui-test-manifest:${AndroidVersion.composeVersion}"
 
 }
