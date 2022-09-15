@@ -1,7 +1,8 @@
-package com.basic.dependences
+package com.build.dependences
 
 internal object AndroidVersion {
-    const val kotlin = "1.5.3"
+    const val kotlin = "1.7.10"
+    const val coreKtx = "1.8.0"
     const val androidLifecycleGrouped = "2.3.1"
     const val material = "1.6.1"
     const val constraintlayout = "2.1.4"

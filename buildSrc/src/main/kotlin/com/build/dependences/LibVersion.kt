@@ -1,4 +1,4 @@
-package com.basic.dependences
+package com.build.dependences
 
 internal object LibVersion {
     const val glide = "4.13.2"

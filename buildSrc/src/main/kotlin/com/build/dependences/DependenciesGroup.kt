@@ -1,4 +1,4 @@
-package com.basic.dependences
+package com.build.dependences
 
 internal val kotlinDependencies = listOf(
     Dependencies.coreKtx,

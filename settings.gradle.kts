@@ -4,8 +4,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        maven (url = "https://jitpack.io")
     }
 }
 rootProject.name = "Basic"
-include ':app',':net',':basic',':stateview','lib-apm'
+include(":app")
+include(":net")
+include(":basic")
+include(":stateview")
+include(":lib-apm")

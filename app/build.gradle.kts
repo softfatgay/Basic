@@ -1,29 +1,26 @@
-import com.basic.dependences
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
 }
 
 android {
-    compileSdk = ProjectConfigs.compileSdkVersion
+    compileSdk = com.build.dependences.ProjectConfigs.compileSdkVersion
     defaultConfig {
-        applicationId = ProjectConfigs.applicationId
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
+        applicationId = com.build.dependences.ProjectConfigs.applicationId
+        minSdk = com.build.dependences.ProjectConfigs.minSdkVersion
+        targetSdk = com.build.dependences.ProjectConfigs.targetSdkVersion
         versionCode = 1
         versionName = "1.0"
-        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
         // We use a bundled debug keystore, to allow debug builds from CI to be upgradable
         named("debug") {
-            storeFile = rootProject.file("debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
+            storeFile = rootProject.file("keyStore.jks")
+            storePassword = "qwer1234"
+            keyAlias = "qwer1234"
+            keyPassword = "qwer1234"
         }
     }
 
@@ -61,40 +58,45 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
-    buildFeatures {
-        compose = true
+    kotlinOptions {
+        jvmTarget = "11"
+        freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
+
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+    viewBinding {
+        enabled = true
     }
 
-    packagingOptions {
-        // Multiple dependency bring these files in. Exclude them to enable
-        // our test APK to build (has no effect on our AARs)
-        excludes += "/META-INF/AL2.0"
-        excludes += "/META-INF/LGPL2.1"
-    }
 }
 
 dependencies {
-    implementation(libs.kotlin.stdlib)
-    implementation(libs.kotlinx.coroutines.android)
+    implementation(com.build.dependences.Dependencies.coreKtx)
+    implementation(com.build.dependences.Dependencies.kotlinStdlib)
+    implementation(com.build.dependences.Dependencies.material)
+    implementation(com.build.dependences.Dependencies.constraintLayout)
 
+    testImplementation(com.build.dependences.Dependencies.junit)
+    androidTestImplementation(com.build.dependences.Dependencies.extJunit)
+    androidTestImplementation(com.build.dependences.Dependencies.espresso)
+
+    implementation(com.build.dependences.Dependencies.rxPermissions)
+    implementation(com.build.dependences.Dependencies.rxjava)
     // TODO: Replace when all samples use the same Material3 & Compose version
-    implementation("androidx.compose.animation:animation:1.3.0-beta01")
-    implementation("androidx.compose.foundation:foundation-layout:1.3.0-beta01")
-    implementation("androidx.compose.material:material-icons-extended:1.3.0-beta01")
-    implementation("androidx.compose.material3:material3:1.0.0-beta01")
-    implementation("androidx.compose.material3:material3-window-size-class:1.0.0-beta01")
-    implementation("androidx.compose.runtime:runtime-livedata:1.3.0-beta01")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.3.0-beta01")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.0-beta01")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.3.0-beta01")
+//    implementation("androidx.compose.animation:animation:1.3.0-beta01")
+//    implementation("androidx.compose.foundation:foundation-layout:1.3.0-beta01")
+//    implementation("androidx.compose.material:material-icons-extended:1.3.0-beta01")
+//    implementation("androidx.compose.material3:material3:1.0.0-beta01")
+//    implementation("androidx.compose.material3:material3-window-size-class:1.0.0-beta01")
+//    implementation("androidx.compose.runtime:runtime-livedata:1.3.0-beta01")
+//    implementation("androidx.compose.ui:ui-tooling-preview:1.3.0-beta01")
+//    debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.0-beta01")
+//    debugImplementation("androidx.compose.ui:ui-tooling:1.3.0-beta01")
+
 //    implementation(libs.androidx.compose.animation)
 //    implementation(libs.androidx.compose.foundation.layout)
 //    implementation(libs.androidx.compose.material.iconsExtended)
@@ -105,40 +107,16 @@ dependencies {
 //    debugImplementation(libs.androidx.compose.ui.test.manifest)
 //    debugImplementation(libs.androidx.compose.ui.tooling)
 
-    implementation("com.google.accompanist:accompanist-swiperefresh:0.26.1-alpha")
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.26.1-alpha")
+//    implementation("com.google.accompanist:accompanist-swiperefresh:0.26.1-alpha")
+//    implementation("com.google.accompanist:accompanist-systemuicontroller:0.26.1-alpha")
 //    implementation(libs.accompanist.swiperefresh)
 //    implementation(libs.accompanist.systemuicontroller)
 
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.activity.ktx)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.activity.compose)
+    implementation(project(":net"))
+    implementation(project(":basic"))
+    implementation(project(":stateview"))
+    implementation(project(":lib-apm"))
 
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.savedstate)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewModelCompose)
-
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.window)
-
-    implementation(libs.google.android.material)
-
-    androidTestImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.core)
-    androidTestImplementation(libs.androidx.test.runner)
-    androidTestImplementation(libs.androidx.test.espresso.core)
-    androidTestImplementation(libs.androidx.test.rules)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.kotlinx.coroutines.test)
-    androidTestImplementation(libs.androidx.compose.ui.test)
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    // Robolectric dependencies
-    // TODO: Replace when all samples use the same Material3 & Compose version
-    implementation("androidx.compose.ui:ui-test-junit4:1.3.0-beta01")
-//    testImplementation(libs.androidx.compose.ui.test.junit4)
-    testImplementation(libs.robolectric)
 }
 
 tasks.withType<Test>().configureEach {

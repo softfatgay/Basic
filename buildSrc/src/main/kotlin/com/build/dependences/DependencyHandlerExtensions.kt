@@ -1,4 +1,4 @@
-package com.basic.dependences
+package com.build.dependences
 
 import org.gradle.api.artifacts.dsl.DependencyHandler
 

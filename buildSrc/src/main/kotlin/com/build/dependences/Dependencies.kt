@@ -1,9 +1,9 @@
-package com.basic.dependences
+package com.build.dependences
 
 object Dependencies {
 
     //android dependencies
-    const val coreKtx = "androidx.core:core-ktx:${AndroidVersion.kotlin}"
+    const val coreKtx = "androidx.core:core-ktx:${AndroidVersion.coreKtx}"
     const val coroutinesCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${AndroidVersion.kotlin}"
     const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${AndroidVersion.kotlin}"
