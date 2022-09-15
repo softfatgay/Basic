@@ -47,7 +47,7 @@ class OnlineInterceptor : Interceptor {
 /**
  * 没有网的时候
  */
-class OfflineInterceptor : Interceptor {
+internal class OfflineInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         if (!NetworkUtil.isNetworkAvailable()) {

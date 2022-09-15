@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.net.util.HttpException
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 open class BaseNetViewModel : ViewModel() {

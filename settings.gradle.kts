@@ -1,4 +1,10 @@
-
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -7,9 +13,9 @@ dependencyResolutionManagement {
         maven (url = "https://jitpack.io")
     }
 }
-rootProject.name = "Basic"
+rootProject.name = "basic"
 include(":app")
 include(":net")
 include(":basic")
-include(":stateview")
+include(":stateView")
 include(":lib-apm")

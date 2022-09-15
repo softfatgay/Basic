@@ -8,11 +8,11 @@ object Dependencies {
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${AndroidVersion.kotlin}"
     const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${AndroidVersion.kotlin}"
     const val coroutinesAndroid =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${AndroidVersion.kotlin}"
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${AndroidVersion.coroutines}"
     const val livedata =
         "androidx.lifecycle:lifecycle-livedata-ktx:${AndroidVersion.androidLifecycleGrouped}"
     const val viewModel =
-        "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1:${AndroidVersion.androidLifecycleGrouped}"
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${AndroidVersion.androidLifecycleGrouped}"
     const val material = "com.google.android.material:material:${AndroidVersion.material}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${AndroidVersion.constraintlayout}"
@@ -29,7 +29,7 @@ object Dependencies {
 
 
 
-    //lib dependencies
+    //third lib dependencies
     const val glide = "com.github.bumptech.glide:glide:${LibVersion.glide}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${LibVersion.glide}"
     const val circleImageview = "de.hdodenhof:circleimageview:${LibVersion.circleimageview}"

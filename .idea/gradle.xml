@@ -15,7 +15,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/lib-apm" />
             <option value="$PROJECT_DIR$/net" />
-            <option value="$PROJECT_DIR$/stateview" />
+            <option value="$PROJECT_DIR$/stateView" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -8,25 +8,25 @@ import com.example.basic.BaseApplication;
 
 public class NetworkUtil {
 
-	/**
-	 * 检查网络是否可用
-	 */
-	public static boolean isNetworkAvailable() {
+    /**
+     * 检查网络是否可用
+     */
+    public static boolean isNetworkAvailable() {
 
-		ConnectivityManager manager = (ConnectivityManager) BaseApplication.instance
-				.getApplicationContext().getSystemService(
-						Context.CONNECTIVITY_SERVICE);
-		if (manager == null) {
-			return false;
-		}
+        ConnectivityManager manager = (ConnectivityManager) BaseApplication.instance
+                .getApplicationContext().getSystemService(
+                        Context.CONNECTIVITY_SERVICE);
+        if (manager == null) {
+            return false;
+        }
 
-		NetworkInfo networkinfo = manager.getActiveNetworkInfo();
+        NetworkInfo networkinfo = manager.getActiveNetworkInfo();
 
-		if (networkinfo == null || !networkinfo.isAvailable()) {
-			return false;
-		}
+        if (networkinfo == null || !networkinfo.isAvailable()) {
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
 }

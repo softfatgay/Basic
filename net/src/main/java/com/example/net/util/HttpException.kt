@@ -14,8 +14,7 @@ import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-object HttpException {
-
+internal object HttpException {
 
     /**
      * 处理异常，toast提示错误信息

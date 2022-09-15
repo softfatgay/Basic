@@ -10,20 +10,6 @@ sourceSets {
     }
 }
 
-buildscript {
-
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        google()
-        maven(url = "https://jitpack.io")
-    }
-
-    dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
-    }
-}
-
 repositories {
     mavenLocal()
     mavenCentral()

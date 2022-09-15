@@ -37,7 +37,7 @@ class WebViewActivity : BaseActivity() {
     }
 
     private fun getData() {
-        val list = intent.getSerializableExtra("list") as ArrayList<TagListItem>
+        val list = intent.getSerializableExtra("list") as ArrayList<*>
 
 //        val list = intent.getParcelableArrayExtra("list") as ArrayList<TagListItem>
         Log.e("---------", "${list.size}")

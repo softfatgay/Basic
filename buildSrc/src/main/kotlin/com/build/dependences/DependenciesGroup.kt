@@ -2,7 +2,6 @@ package com.build.dependences
 
 internal val kotlinDependencies = listOf(
     Dependencies.coreKtx,
-    Dependencies.coroutinesCore,
     Dependencies.kotlinStdlib,
     Dependencies.coroutinesAndroid
 )

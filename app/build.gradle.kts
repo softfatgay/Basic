@@ -1,17 +1,20 @@
+import com.build.dependences.*
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-parcelize")
 }
 
 android {
-    compileSdk = com.build.dependences.ProjectConfigs.compileSdkVersion
+    compileSdk = ProjectConfigs.compileSdkVersion
     defaultConfig {
-        applicationId = com.build.dependences.ProjectConfigs.applicationId
-        minSdk = com.build.dependences.ProjectConfigs.minSdkVersion
-        targetSdk = com.build.dependences.ProjectConfigs.targetSdkVersion
-        versionCode = 1
-        versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        minSdk = ProjectConfigs.minSdkVersion
+        targetSdk = ProjectConfigs.targetSdkVersion
+        applicationId = ProjectConfigs.applicationId
+        versionCode = ProjectConfigs.versionCode
+        versionName = ProjectConfigs.versionName
+        testInstrumentationRunner = ProjectConfigs.testInstrumentationRunner
     }
 
     signingConfigs {
@@ -29,7 +32,7 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
 
-        getByName("release") {
+        getByName("debug") {
             isMinifyEnabled = true
             signingConfig = signingConfigs.getByName("debug")
             proguardFiles(
@@ -46,17 +49,6 @@ android {
         }
     }
 
-    // Tests can be Robolectric or instrumented tests
-    sourceSets {
-        val sharedTestDir = "src/sharedTest/java"
-        getByName("test") {
-            java.srcDir(sharedTestDir)
-        }
-        getByName("androidTest") {
-            java.srcDir(sharedTestDir)
-        }
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -69,23 +61,21 @@ android {
     }
 
     viewBinding {
-        enabled = true
+        isEnabled = true
     }
 
 }
 
 dependencies {
-    implementation(com.build.dependences.Dependencies.coreKtx)
-    implementation(com.build.dependences.Dependencies.kotlinStdlib)
-    implementation(com.build.dependences.Dependencies.material)
-    implementation(com.build.dependences.Dependencies.constraintLayout)
+    implementation(Dependencies.coreKtx)
+    implementation(Dependencies.material)
+    implementation(Dependencies.constraintLayout)
 
-    testImplementation(com.build.dependences.Dependencies.junit)
-    androidTestImplementation(com.build.dependences.Dependencies.extJunit)
-    androidTestImplementation(com.build.dependences.Dependencies.espresso)
+    addTestImplementation()
+    addAndroidTestImplementation()
 
-    implementation(com.build.dependences.Dependencies.rxPermissions)
-    implementation(com.build.dependences.Dependencies.rxjava)
+    implementation(Dependencies.rxPermissions)
+    implementation(Dependencies.rxjava)
     // TODO: Replace when all samples use the same Material3 & Compose version
 //    implementation("androidx.compose.animation:animation:1.3.0-beta01")
 //    implementation("androidx.compose.foundation:foundation-layout:1.3.0-beta01")
@@ -114,11 +104,11 @@ dependencies {
 
     implementation(project(":net"))
     implementation(project(":basic"))
-    implementation(project(":stateview"))
+    implementation(project(":stateView"))
     implementation(project(":lib-apm"))
 
 }
 
 tasks.withType<Test>().configureEach {
-    systemProperties.put("robolectric.logging", "stdout")
+    systemProperties["robolectric.logging"] = "stdout"
 } 
