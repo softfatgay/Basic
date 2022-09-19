@@ -1,5 +1,6 @@
 import com.android.build.gradle.internal.utils.addComposeArgsToKotlinCompile
 import com.build.dependences.*
+import com.build.sign.*
 
 plugins {
     id("com.android.application")
@@ -21,10 +22,10 @@ android {
     signingConfigs {
         // We use a bundled debug keystore, to allow debug builds from CI to be upgradable
         named("debug") {
-            storeFile = rootProject.file("keyStore.jks")
-            storePassword = "qwer1234"
-            keyAlias = "qwer1234"
-            keyPassword = "qwer1234"
+            storeFile = rootProject.file(SignConfig.JKSPath)
+            storePassword = SignConfig.storePassword
+            keyAlias = SignConfig.keyAlias
+            keyPassword = SignConfig.keyPassword
         }
     }
 
@@ -33,7 +34,7 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
 
-        getByName("debug") {
+        getByName("release") {
             isMinifyEnabled = true
             signingConfig = signingConfigs.getByName("debug")
             proguardFiles(

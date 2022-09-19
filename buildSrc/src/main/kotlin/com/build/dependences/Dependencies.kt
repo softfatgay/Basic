@@ -59,6 +59,7 @@ object Dependencies {
         "androidx.compose.ui:ui-test-manifest:${AndroidVersion.composeVersion}"
     const val composeSystemUiController =
         "com.google.accompanist:accompanist-systemuicontroller:${AndroidVersion.accompanistVersion}"
-    const val composeInsets = "com.google.accompanist:accompanist-insets:${AndroidVersion.accompanistVersion}"
-const val composeNavigation = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha03"
+    const val composeInsets =
+        "com.google.accompanist:accompanist-insets:${AndroidVersion.accompanistVersion}"
+    const val composeNavigation = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha03"
 }
