@@ -4,34 +4,37 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.*
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import com.basic.demo.databinding.ActivityMainBinding
 import com.basic.demo.home.HomeScreen
+import com.basic.demo.theme.AppTheme
+import com.basic.demo.ui.common.RouteName
 import com.basic.demo.viewModel.MainViewModel
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.navigation.compose.currentBackStackEntryAsState
 
 enum class NaviType {
-    HOME,CART,MINE
+    HOME, CART, MINE
 }
 
 
@@ -44,24 +47,40 @@ class MainActivity : ComponentActivity() {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
-    @SuppressLint("UnrememberedMutableState")
-    @OptIn(ExperimentalMaterial3Api::class)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            var navType = mutableStateOf(NaviType.HOME)
-            Scaffold(
-                bottomBar = {BottomNavBar(navType)},
-            ) { paddingValues->
-                Crossfade(targetState = navType,Modifier.padding(paddingValues)) {
-                   when (it.value) {
-                       NaviType.HOME -> HomeScreen()
-                       NaviType.CART -> HomeScreen()
-                       NaviType.MINE -> HomeScreen()
-                   }
-               }
+
+            AppTheme(AppTheme.Theme.Light) {
+                AppScaffold()
             }
         }
+    }
+
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun AppScaffold(){
+        val navCtrl = rememberNavController()
+        val navBackStackEntry by navCtrl.currentBackStackEntryAsState()
+        val currentDestination = navBackStackEntry?.destination
+        val scaffoldState = rememberScaffoldState()
+
+        Scaffold(
+            bottomBar = {
+                when (currentDestination?.route) {
+                    RouteName.HOME -> BottomNavBarView(navCtrl = navCtrl)
+                }
+            },
+            content = {
+                NavHost(
+                    modifier = Modifier.background(MaterialTheme.colors.background),
+                    navController = navCtrl,
+                    startDestination = RouteName.HOME
+                )
+            }
+        )
     }
 
     @Composable
@@ -70,12 +89,17 @@ class MainActivity : ComponentActivity() {
             BottomNavigationItem(
                 icon = { Icon(imageVector = Icons.Outlined.Home, contentDescription = null) },
                 selected = (navType.value == NaviType.HOME),
-                onClick = { navType.value = NaviType.HOME  },
+                onClick = { navType.value = NaviType.HOME },
                 label = { Text(text = "Home") },
             )
 
             BottomNavigationItem(
-                icon = { Icon(imageVector = Icons.Outlined.ShoppingCart, contentDescription = null) },
+                icon = {
+                    Icon(
+                        imageVector = Icons.Outlined.ShoppingCart,
+                        contentDescription = null
+                    )
+                },
                 selected = navType.value == NaviType.CART,
                 onClick = { navType.value = NaviType.CART },
                 label = { Text(text = "Cart") },

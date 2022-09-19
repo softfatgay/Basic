@@ -44,16 +44,21 @@ object Dependencies {
 
     //compose
 
-    const val composeMaterial = "androidx.compose.material:material:${AndroidVersion.composeVersion}"
+    const val composeMaterial =
+        "androidx.compose.material:material:${AndroidVersion.composeVersion}"
     const val composeMaterial3 = "androidx.compose.material3:material3:1.0.0-beta01"
     const val composeActivity = "androidx.activity:activity-compose:1.5.1"
     const val composeUI = "androidx.compose.ui:ui:${AndroidVersion.composeVersion}"
-    const val composePreview = "androidx.compose.ui:ui-tooling-preview:${AndroidVersion.composeVersion}"
+    const val composePreview =
+        "androidx.compose.ui:ui-tooling-preview:${AndroidVersion.composeVersion}"
     const val composeUiTestJunit4 =
         "androidx.compose.ui:ui-test-junit4:${AndroidVersion.composeVersion}"
     const val composeDebugUiTooling =
         "androidx.compose.ui:ui-tooling:${AndroidVersion.composeVersion}"
     const val composeDebugTestManifest =
         "androidx.compose.ui:ui-test-manifest:${AndroidVersion.composeVersion}"
-
+    const val composeSystemUiController =
+        "com.google.accompanist:accompanist-systemuicontroller:${AndroidVersion.accompanistVersion}"
+    const val composeInsets = "com.google.accompanist:accompanist-insets:${AndroidVersion.accompanistVersion}"
+const val composeNavigation = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha03"
 }

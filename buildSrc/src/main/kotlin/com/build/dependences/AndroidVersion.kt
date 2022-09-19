@@ -16,5 +16,6 @@ internal object AndroidVersion {
     const val recyclerview = "1.3.0-beta01"
     const val flexbox = "3.0.0"
     const val appcompat = "1.4.2"
-    const val composeVersion = "1.3.0-beta01"
+    const val composeVersion = "1.0.5"
+    const val accompanistVersion = "0.18.0"
 }

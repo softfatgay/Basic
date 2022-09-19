@@ -63,6 +63,7 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion =  ProjectConfigs.composeVersion
+        kotlinCompilerVersion =  ProjectConfigs.composeVersion
     }
     viewBinding {
         isEnabled = true

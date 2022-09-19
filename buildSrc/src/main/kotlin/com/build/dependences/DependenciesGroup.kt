@@ -56,6 +56,9 @@ internal val composeImplementation = listOf(
     Dependencies.composeMaterial,
     Dependencies.composeMaterial3,
     Dependencies.composeActivity,
+    Dependencies.composeSystemUiController,
+    Dependencies.composeInsets,
+    Dependencies.composeNavigation,
 )
 internal val composeDebugImplementation = listOf(
     Dependencies.composeDebugUiTooling,

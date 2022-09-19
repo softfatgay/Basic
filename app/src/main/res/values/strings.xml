@@ -5,4 +5,8 @@
     <string name="permission_open_tips">已禁用权限，请手动授权</string>
     <string name="confirm_tv">确定</string>
     <string name="cancel_tv">取消</string>
+    <string name="home_title">首页</string>
+    <string name="cart_title">购物车</string>
+    <string name="mine_title">我的</string>
+
 </resources>
