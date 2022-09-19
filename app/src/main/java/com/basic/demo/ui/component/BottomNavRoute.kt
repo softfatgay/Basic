@@ -1,6 +1,5 @@
-package com.basic.demo.ui.common.component
+package com.basic.demo.ui.component
 
-import android.graphics.drawable.Icon
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home

@@ -1,4 +1,4 @@
-package com.basic.demo.ui.common.home.component
+package com.basic.demo.ui.home.component
 
 import androidx.compose.runtime.Composable
 

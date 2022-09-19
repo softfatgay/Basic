@@ -1,4 +1,4 @@
-package com.basic.demo.ui.common.component
+package com.basic.demo.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.material.BottomNavigation

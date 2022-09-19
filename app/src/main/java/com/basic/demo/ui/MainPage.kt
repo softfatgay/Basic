@@ -9,19 +9,20 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.basic.demo.theme.AppTheme
-import com.basic.demo.ui.common.component.BottomNavBarView
-import com.basic.demo.ui.common.home.component.HomePage
+import com.basic.demo.ui.component.BottomNavBarView
+import com.basic.demo.ui.home.component.HomePage
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+@Preview
 fun MainPage() {
     val navCtrl = rememberNavController()
     val navBackStackEntry by navCtrl.currentBackStackEntryAsState()

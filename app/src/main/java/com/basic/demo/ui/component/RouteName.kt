@@ -1,4 +1,4 @@
-package com.basic.demo.ui.common.component
+package com.basic.demo.ui.component
 
 object RouteName {
     const val HOME = "home"
