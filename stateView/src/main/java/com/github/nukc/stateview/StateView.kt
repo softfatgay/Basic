@@ -8,7 +8,6 @@ import android.content.Context
 import android.graphics.Canvas
 import android.os.Build
 import android.util.AttributeSet
-import android.util.Log
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
@@ -228,7 +227,7 @@ class StateView @JvmOverloads constructor(
                 lp.topToTop = source.topToTop
                 lp.bottomToBottom = source.bottomToBottom
 //                此处为设置头部toolbar高度,根据项目情况设置
-                lp.setMargins(0, DeminUtils.dp2px(context, 50.0f), 0, 0)
+                lp.setMargins(0, DimenUtils.dp2px(context, 50.0f), 0, 0)
                 viewParent.addView(view, index, lp)
             } else {
                 viewParent.addView(view, index, layoutParams)
