@@ -9,6 +9,10 @@ import com.basic.demo.theme.AppTheme
 import com.basic.demo.ui.common.MainPage
 import com.basic.demo.viewModel.MainViewModel
 
+enum class NaviType {
+    HOME, CART, MINE
+}
+
 class MainActivity : ComponentActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -26,8 +30,4 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
-
-enum class NaviType {
-    HOME, CART, MINE
 }
