@@ -45,7 +45,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
     open fun initView(savedInstanceState: Bundle?) {}
 
-
     var mPermissionDialog: AlertDialog? = null
     open fun showSettingDialog(fragment: FragmentActivity) {
         try {
@@ -60,7 +59,7 @@ abstract class BaseActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                     .setNegativeButton(getString(R.string.cancel_tv)) { _: DialogInterface?, _: Int ->
-                        //关闭页面或者做其他操作
+                        // 关闭页面或者做其他操作
                         mPermissionDialog!!.dismiss()
                     }
                     .create()
@@ -69,10 +68,8 @@ abstract class BaseActivity : AppCompatActivity() {
                 mPermissionDialog!!.show()
             }
         } catch (e: Exception) {
-
         }
     }
-
 
     val rxPermissions: RxPermissions by lazy {
         RxPermissions(this)
@@ -81,12 +78,11 @@ abstract class BaseActivity : AppCompatActivity() {
     protected fun requestPerMission() {
         rxPermissions.requestEachCombined(
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
         )
             .subscribe { permission: Permission ->
                 when {
                     permission.granted -> {
-
                     }
                     permission.shouldShowRequestPermissionRationale -> {
                     }
@@ -101,5 +97,4 @@ abstract class BaseActivity : AppCompatActivity() {
     fun jump2Page(intent: Intent, context: Context = this) {
         startActivity(intent)
     }
-
 }
