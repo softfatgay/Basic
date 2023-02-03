@@ -6,13 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.lifecycle.ViewModelProvider
 import com.basic.demo.databinding.ActivityMainBinding
 import com.basic.demo.theme.AppTheme
-import com.basic.demo.viewModel.MainViewModel
 import com.basic.demo.ui.common.MainPage
+import com.basic.demo.viewModel.MainViewModel
 
 enum class NaviType {
     HOME, CART, MINE
 }
-
 
 class MainActivity : ComponentActivity() {
     private val binding by lazy {
@@ -23,15 +22,12 @@ class MainActivity : ComponentActivity() {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
             AppTheme(AppTheme.Theme.Light) {
                 MainPage()
             }
         }
     }
-
 }
