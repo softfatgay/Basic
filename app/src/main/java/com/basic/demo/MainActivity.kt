@@ -31,20 +31,17 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         Thread {
             binding.btnWeb.visibility = View.VISIBLE
         }.start()
-
     }
 
     override fun initEvent() {
         super.initEvent()
         binding.btn.setOnClickListener(this)
         binding.btnWeb.setOnClickListener(this)
-
     }
 
     override fun reTry() {
         super.reTry()
         getData()
-
     }
 
     override fun initData() {
@@ -60,7 +57,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
         viewModel.homeData.observe(this) {
             binding.tv.text = it
-            binding.tv.movementMethod = ScrollingMovementMethod.getInstance();
+            binding.tv.movementMethod = ScrollingMovementMethod.getInstance()
         }
     }
 
@@ -74,7 +71,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             binding.btnWeb -> goWebView()
         }
     }
-
 
     private fun goWebView() {
         val intent = Intent(this, WebViewActivity::class.java)
@@ -94,9 +90,9 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         startActivity(intent)
     }
 
-
     override fun onResume() {
         super.onResume()
+        val b = 1
+        val c = 2
     }
-
 }
