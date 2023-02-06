@@ -3,7 +3,6 @@ package com.example.basic
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import android.util.Log
 import com.example.basic.utils.Logu
 import com.example.basic.utils.PackageUtil
 
@@ -23,7 +22,6 @@ open class BaseApplication : Application() {
     private fun registActivityCallBack() {
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-
             }
 
             override fun onActivityStarted(activity: Activity) {
@@ -31,10 +29,12 @@ open class BaseApplication : Application() {
 
             override fun onActivityResumed(activity: Activity) {
                 val firstActivity = PackageUtil.isFirstActivity(activity)
-                if (firstActivity)
+                if (firstActivity) {
                     Logu.d(
-                        "${Constants.LAUNCH_LOG}firstView", "${System.currentTimeMillis()}"
+                        "${Constants.LAUNCH_LOG}firstView",
+                        "${System.currentTimeMillis()}"
                     )
+                }
             }
 
             override fun onActivityPaused(activity: Activity) {
@@ -50,6 +50,4 @@ open class BaseApplication : Application() {
             }
         })
     }
-
-
 }

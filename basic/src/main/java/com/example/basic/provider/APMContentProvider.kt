@@ -4,14 +4,13 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
-import android.util.Log
 import com.example.basic.Constants.LAUNCH_LOG
 import com.example.basic.utils.Logu
 import java.text.SimpleDateFormat
 
 class APMContentProvider : ContentProvider() {
     override fun onCreate(): Boolean {
-        Logu.d("${LAUNCH_LOG}launch.click","${System.currentTimeMillis()}")
+        Logu.d("${LAUNCH_LOG}launch.click", "${System.currentTimeMillis()}")
         return true
     }
 
@@ -45,7 +44,6 @@ class APMContentProvider : ContentProvider() {
     ): Int {
         return 0
     }
-
 
     private fun getDateTime(s: Long): String? {
         return SimpleDateFormat("yyyy-MM-DD-hh-mm-ss").format(s)

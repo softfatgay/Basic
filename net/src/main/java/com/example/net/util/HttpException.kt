@@ -16,7 +16,6 @@ import java.net.UnknownHostException
 
 object HttpException {
 
-
     /**
      * 处理异常，toast提示错误信息
      */
@@ -43,12 +42,16 @@ object HttpException {
 //                showToast(e.message?:"", e.code)
 //            }
             is ConnectException -> {
-                showToast( R.string.connect_server_error)
+                showToast(R.string.connect_server_error)
             }
             else -> {
-                showToast("${BaseApplication.instance.getString(
-                    R.string.common_error
-                )}：${e::class.java.name}")
+                showToast(
+                    "${
+                    BaseApplication.instance.getString(
+                        R.string.common_error
+                    )
+                    }：${e::class.java.name}"
+                )
             }
         }
     }
@@ -57,11 +60,12 @@ object HttpException {
      * 处理网络异常
      */
     fun catchHttpException(errorCode: Int) {
-        if (errorCode in 200 until 300) return// 成功code则不处理
+        if (errorCode in 200 until 300) return // 成功code则不处理
         showToast(
             catchHttpExceptionCode(
                 errorCode
-            ), errorCode
+            ),
+            errorCode
         )
     }
 
@@ -72,7 +76,8 @@ object HttpException {
         showToast(
             BaseApplication.instance.getString(
                 errorMsg
-            ), errorCode
+            ),
+            errorCode
         )
     }
 
@@ -80,8 +85,8 @@ object HttpException {
      * toast提示
      */
     private fun showToast(errorMsg: String, errorCode: Int = -1) {
-        Log.e("http-error=>errorCode:","$errorCode")
-        Toast.makeText(BaseApplication.instance,errorMsg,Toast.LENGTH_LONG).show()
+        Log.e("http-error=>errorCode:", "$errorCode")
+        Toast.makeText(BaseApplication.instance, errorMsg, Toast.LENGTH_LONG).show()
 //        if (errorCode == -1) {
 //            ToastUtils.showShort(errorMsg)
 //        } else {

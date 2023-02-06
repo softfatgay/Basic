@@ -35,7 +35,6 @@ class SingleEvent<T> : MutableLiveData<T>() {
         super.setValue(t)
     }
 
-
     /**
      * Used for cases where T is Void, to make calls cleaner.
      */
@@ -43,5 +42,4 @@ class SingleEvent<T> : MutableLiveData<T>() {
     fun call() {
         value = null
     }
-
 }

@@ -19,13 +19,8 @@ interface ApiService {
         @Query("per_page") perPage: Int
     ): SearchResultEntry
 
-
     @GET("xhr/index.json")
     suspend fun indexJson(
-        @Query("__timestamp") page: Long,
+        @Query("__timestamp") page: Long
     ): ResponseBody
-
-
-
 }
-
