@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.Color
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
-//夜色主题
+// 夜色主题
 private val DarkColorPalette = AppColors(
     themeUi = black1,
     background = black2,
@@ -25,10 +25,10 @@ private val DarkColorPalette = AppColors(
     primaryBtnBg = black1,
     secondBtnBg = white1,
     hot = red,
-    placeholder = grey1,
+    placeholder = grey1
 )
 
-//白天主题
+// 白天主题
 private val LightColorPalette = AppColors(
     themeUi = themeColor,
     background = white2,
@@ -46,7 +46,7 @@ private val LightColorPalette = AppColors(
     primaryBtnBg = themeColor,
     secondBtnBg = white3,
     hot = red,
-    placeholder = white3,
+    placeholder = white3
 )
 var LocalAppColors = compositionLocalOf {
     LightColorPalette
@@ -81,7 +81,7 @@ class AppColors(
     primaryBtnBg: Color,
     secondBtnBg: Color,
     hot: Color,
-    placeholder: Color,
+    placeholder: Color
 ) {
     var themeUi: Color by mutableStateOf(themeUi)
         internal set
@@ -117,16 +117,13 @@ class AppColors(
         private set
     var placeholder: Color by mutableStateOf(placeholder)
         private set
-
 }
-
 
 @Composable
 fun AppTheme(
     theme: AppTheme.Theme = AppTheme.Theme.Light,
     content: @Composable () -> Unit
 ) {
-
     val targetColors = when (theme) {
         AppTheme.Theme.Light -> {
             LightColorPalette.themeUi = themeColor
@@ -181,5 +178,4 @@ fun AppTheme(
     ProvideWindowInsets {
         CompositionLocalProvider(LocalAppColors provides appColors, content = content)
     }
-
 }

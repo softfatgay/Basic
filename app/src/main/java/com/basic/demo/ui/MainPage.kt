@@ -39,7 +39,7 @@ fun MainPage() {
                 RouteName.CART -> BottomNavBarView(navCtrl = navCtrl)
                 RouteName.MINE -> BottomNavBarView(navCtrl = navCtrl)
             }
-        }, content = {
+        }, content = { // ktlint-disable argument-list-wrapping
             NavHost(
                 modifier = Modifier.background(MaterialTheme.colors.background),
                 navController = navCtrl,

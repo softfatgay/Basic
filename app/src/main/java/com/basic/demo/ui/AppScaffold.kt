@@ -30,7 +30,6 @@ fun AppScaffold() {
         modifier = Modifier
             .navigationBarsPadding(),
         bottomBar = {
-
         },
         content = {
             var homeIndex = remember { 0 }
@@ -41,7 +40,6 @@ fun AppScaffold() {
                 navController = navCtrl,
                 startDestination = RouteName.HOME
             ) {
-
             }
         },
         snackbarHost = {

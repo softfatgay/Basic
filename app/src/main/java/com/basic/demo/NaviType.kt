@@ -2,16 +2,11 @@ package com.basic.demo
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.lifecycle.ViewModelProvider
 import com.basic.demo.databinding.ActivityMainBinding
-import com.basic.demo.theme.AppTheme
-import com.basic.demo.ui.common.MainPage
+import com.basic.demo.market.OppoMarketCommentUtil
+import com.basic.demo.market.VivoMarketCommentUtil
 import com.basic.demo.viewModel.MainViewModel
-
-enum class NaviType {
-    HOME, CART, MINE
-}
 
 class MainActivity : ComponentActivity() {
     private val binding by lazy {
@@ -24,10 +19,15 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            AppTheme(AppTheme.Theme.Light) {
-                MainPage()
-            }
+
+        setContentView(binding.root)
+
+        binding.oppo.setOnClickListener {
+            OppoMarketCommentUtil.jumpToComment(this)
+        }
+
+        binding.vivo.setOnClickListener {
+            VivoMarketCommentUtil.jumpToComment(this)
         }
     }
 }

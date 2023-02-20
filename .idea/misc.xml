@@ -12,11 +12,11 @@
         <entry key="..\:/private/BasicDemo/stateview/src/main/res/layout/base_empty.xml" value="0.1609375" />
         <entry key="..\:/private/BasicDemo/stateview/src/main/res/layout/base_loading.xml" value="0.1609375" />
         <entry key="..\:/private/BasicDemo/stateview/src/main/res/layout/base_retry.xml" value="0.1609375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16261398176291794" />
       </map>
     </option>
   </component>
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" project-jdk-name="18" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

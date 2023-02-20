@@ -24,8 +24,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
-import com.basic.demo.theme.AppTheme
-import com.basic.demo.theme.themeColor
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,7 +39,7 @@ fun HomePage() {
                 onValueChange = {
                     text = it
                     Log.e("textFiled------->", text)
-                },
+                }
             )
         },
         content = {
@@ -65,7 +63,8 @@ fun AnimatedVisibilityTest() {
                     .background(Color.Red)
                     .clickable {
                         isShow = !isShow
-                    }, text = if (isShow) "显示" else "隐藏"
+                    },
+                text = if (isShow) "显示" else "隐藏"
             )
         }
 
@@ -73,9 +72,7 @@ fun AnimatedVisibilityTest() {
             Text(text = "click")
         }
     }
-
 }
-
 
 @SuppressLint("UnusedCrossfadeTargetStateParameter")
 @Composable
@@ -95,9 +92,9 @@ fun CrossfadeTest() {
                         .background(Color.Blue)
                         .clickable {
                             isShow = !isShow
-                        }, text = if (isShow) "显示" else "隐藏"
+                        },
+                    text = if (isShow) "显示" else "隐藏"
                 )
-
             } else {
                 Text(
                     modifier = Modifier
@@ -105,7 +102,6 @@ fun CrossfadeTest() {
                         .background(Color.Red),
                     text = if (isShow) "显示" else "隐藏"
                 )
-
             }
         }
 
@@ -113,15 +109,38 @@ fun CrossfadeTest() {
             Text(text = "click")
         }
     }
-
 }
-
 
 @Composable
 private fun Content() {
     val current = LocalContext.current
     val lists by remember {
-        mutableStateOf(listOf("a", "b", "c", "d", "b", "c", "d", "b", "c", "d", "b", "c", "d", "b", "c", "d", "b", "c", "d", "b", "c", "d"))
+        mutableStateOf(
+            listOf(
+                "a",
+                "b",
+                "c",
+                "d",
+                "b",
+                "c",
+                "d",
+                "b",
+                "c",
+                "d",
+                "b",
+                "c",
+                "d",
+                "b",
+                "c",
+                "d",
+                "b",
+                "c",
+                "d",
+                "b",
+                "c",
+                "d"
+            )
+        )
     }
     var count by remember {
         mutableStateOf(1)
@@ -137,9 +156,11 @@ private fun Content() {
                 modifier = Modifier
                     .padding(vertical = 20.dp)
                     .background(Color.Red),
-                text = AnnotatedString("我是第${index}条"), onClick = {
+                text = AnnotatedString("我是第${index}条"),
+                onClick = {
                     Toast.makeText(current, "我是第${index}条", Toast.LENGTH_LONG).show()
-                })
+                }
+            )
         }
     }
 }

@@ -7,13 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.*
-import com.example.basic.Constants.URL_EXTRA
 import com.basic.demo.base.BaseFragment
 import com.basic.demo.databinding.FragmentWebviewBinding
+import com.example.basic.Constants.URL_EXTRA
 
 class WebViewFragment : BaseFragment() {
-
-
 
     private val url: String by lazy {
         requireArguments().getString(URL_EXTRA) as String
@@ -41,16 +39,14 @@ class WebViewFragment : BaseFragment() {
 
         webSetting.cacheMode = WebSettings.LOAD_DEFAULT
 
-        Log.e("------------",url)
+        Log.e("------------", url)
 
         binding.webView.loadUrl(url)
 
         binding.webView.webChromeClient = webChromeClient
 
         binding.webView.webViewClient = webViewClient
-
     }
-
 
     private val webChromeClient = object : WebChromeClient() {
         override fun onReceivedTitle(view: WebView?, title: String?) {
@@ -62,9 +58,7 @@ class WebViewFragment : BaseFragment() {
         }
 
         override fun onProgressChanged(view: WebView?, newProgress: Int) {
-
         }
-
     }
 
     private val webViewClient = object : WebViewClient() {
@@ -74,11 +68,9 @@ class WebViewFragment : BaseFragment() {
             super.onPageStarted(view, url, favicon)
         }
 
-
         override fun onPageFinished(view: WebView?, url: String?) {
             webSetting.blockNetworkImage = false
             super.onPageFinished(view, url)
         }
     }
-
 }

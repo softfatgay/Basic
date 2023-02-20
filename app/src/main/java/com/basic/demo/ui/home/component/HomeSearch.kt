@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalComposeUiApi::class)
+
 package com.basic.demo.ui.home.component
 
 import android.content.Context
@@ -11,14 +13,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 
-
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun HomeSearch(input: String = "", onValueChange: (String) -> Unit) {
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -29,20 +28,15 @@ fun HomeSearch(input: String = "", onValueChange: (String) -> Unit) {
         placeholder = {
             Text(text = "请输入关键字")
         },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 10.dp),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp),
         singleLine = true,
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         // keyboardActions submits the search query when the search key is pressed
-        keyboardActions = KeyboardActions(
-            onSearch = {
-                submitSearch(onValueChange, context)
-                keyboardController?.hide()
-            }
-        )
+        keyboardActions = KeyboardActions(onSearch = {
+            submitSearch(onValueChange, context)
+            keyboardController?.hide()
+        })
     )
-
 }
 
 /**

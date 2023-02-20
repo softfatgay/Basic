@@ -3,10 +3,9 @@ package com.basic.demo.webview
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.example.basic.Constants
 import com.basic.demo.base.BaseActivity
 import com.basic.demo.databinding.ActivityWebviewBinding
-import com.basic.demo.model.TagListItem
+import com.example.basic.Constants
 
 class WebViewActivity : BaseActivity() {
 
@@ -29,10 +28,12 @@ class WebViewActivity : BaseActivity() {
             val webBundle = Bundle()
             webBundle.putString(Constants.URL_EXTRA, "$url")
             supportFragmentManager.beginTransaction()
-                .add(binding.fragmentContainerView.id, WebViewFragment().apply {
-                    arguments = webBundle
-                }).commit()
-
+                .add(
+                    binding.fragmentContainerView.id,
+                    WebViewFragment().apply {
+                        arguments = webBundle
+                    }
+                ).commit()
         }
     }
 

@@ -18,16 +18,16 @@ object RetrofitUtil {
         return this
     }
 
-    //缓存大小
+    // 缓存大小
     private const val maxCacheSize = 1024 * 1024 * 10L
 
-    //创建OkHttp实例
+    // 创建OkHttp实例
     private var okHttpClient: OkHttpClient
 
     init {
         val client = OkHttpClient.Builder()
 
-        //去除header中指定的参数
+        // 去除header中指定的参数
         client.addInterceptor(AuthInterceptor())
 
 //        //参数
@@ -41,7 +41,7 @@ object RetrofitUtil {
 //            .addNetworkInterceptor(OnlineInterceptor())
 //
 //
-        //在Debug模式下设置日志拦截器
+        // 在Debug模式下设置日志拦截器
         if (BuildConfig.DEBUG) {
             val logger =
                 HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
@@ -51,7 +51,7 @@ object RetrofitUtil {
     }
 
     private fun getRetrofit(): Retrofit {
-        //生成Retrofit实例
+        // 生成Retrofit实例
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(BASE_URL)
@@ -61,7 +61,7 @@ object RetrofitUtil {
 
     private val mApis = ArrayMap<String, Any>()
 
-    //对外提供的方法
+    // 对外提供的方法
     @Suppress("UNCHECKED_CAST")
     fun <T> provide(apiInterfaceClass: Class<T>): T {
         val api = mApis[apiInterfaceClass.name] as T ?: getRetrofit().create(apiInterfaceClass)
@@ -72,5 +72,4 @@ object RetrofitUtil {
     fun <T> initService(t: Class<T>): T {
         return getRetrofit().create(t)
     }
-
 }
