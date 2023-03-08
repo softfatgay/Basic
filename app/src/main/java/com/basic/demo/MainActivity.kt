@@ -92,6 +92,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        val a = "提交的第一次"
+        val a = "undo commit"
     }
 }
