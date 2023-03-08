@@ -92,7 +92,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        val b = 2
-        val c = 3
+        val a = "--------"
     }
 }
